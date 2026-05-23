@@ -32,19 +32,12 @@
   .splash{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
     background:rgba(16,32,64,0.55);backdrop-filter:blur(6px);
     animation:splashIn .4s ease both}
-  .splash.hide{opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s ease}
-  .splash-card{position:relative;background:var(--cream);border:1px solid var(--line);
-    border-radius:22px;padding:46px 44px 38px;width:min(360px,86vw);text-align:center;
-    box-shadow:0 30px 70px rgba(16,32,64,0.4);
-    animation:cardIn .5s cubic-bezier(.2,.8,.2,1) both}
-  .splash-card img{width:140px;height:auto;margin-bottom:18px;filter:drop-shadow(0 10px 22px rgba(16,32,64,0.18))}
-  .splash-name{font-family:'Playfair Display',serif;font-weight:600;color:var(--navy);font-size:1.25rem;letter-spacing:.08em}
-  .splash-motto{font-family:'Fraunces',serif;font-style:italic;color:var(--gold-deep);margin-top:8px;font-size:1rem}
-  .splash-x{position:absolute;top:12px;right:14px;background:none;border:none;cursor:pointer;
-    font-size:1.7rem;line-height:1;color:var(--muted);transition:color .15s}
-  .splash-x:hover{color:var(--navy)}
+  .splash.hide{opacity:0;visibility:hidden;transition:opacity .55s ease,visibility .55s ease}
+  .splash img{width:min(440px,80vw);height:auto;cursor:pointer;
+    filter:drop-shadow(0 24px 60px rgba(0,0,0,0.4));
+    animation:cardIn .55s cubic-bezier(.2,.8,.2,1) both}
   @keyframes splashIn{from{opacity:0}to{opacity:1}}
-  @keyframes cardIn{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.92)}to{opacity:1;transform:none}}
 
   /* NAV */
   nav{position:sticky;top:0;z-index:60;background:var(--navy);border-bottom:1px solid rgba(233,210,104,0.25)}
@@ -143,12 +136,7 @@
 <body>
 
 <div id="splash" class="splash">
-  <div class="splash-card">
-    <button class="splash-x" id="splashX" aria-label="Close">&times;</button>
-    <img src="favicon.svg" alt="Om Chaitanya Foundation seal">
-    <div class="splash-name">OM CHAITANYA FOUNDATION</div>
-    <div class="splash-motto">Asatoma Sadgamaya</div>
-  </div>
+  <img src="favicon.svg" alt="Om Chaitanya Foundation">
 </div>
 
 <nav>
@@ -296,7 +284,6 @@
       <img src="logo.png" alt="Om Chaitanya Foundation">
       <b>Kasabai Janardan Gunjal College of Nursing</b>
     </div>
-    <div>An Om Chaitanya Foundation institution &middot; Alephata, Dist. Pune</div>
     <div style="margin-top:8px">&copy; <span id="yr"></span> Kasabai Janardan Gunjal College of Nursing. All rights reserved.</div>
   </div>
 </footer>
@@ -305,9 +292,8 @@
   (function(){
     var s=document.getElementById('splash');
     function close(){ s.classList.add('hide'); }
-    document.getElementById('splashX').addEventListener('click', close);
-    s.addEventListener('click', function(e){ if(e.target===s) close(); });
-    setTimeout(close, 3500);
+    s.addEventListener('click', close);
+    setTimeout(close, 3000);
   })();
   document.getElementById('yr').textContent = new Date().getFullYear();
   var io = new IntersectionObserver(function(es){
